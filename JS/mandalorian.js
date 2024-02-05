@@ -34,12 +34,12 @@ class Mandalorian {
 
     movimiento () {
         window.addEventListener("keydown", (event) => {
-            if (event.key === "ArrowTop") {
+            if (event.key === "ArrowUp") {
                 this.y -= this.speed;
-                this.y.style.top = `${this.y}px`
+                this.node.style.top = `${this.y}px`
             } else if (event.key === "ArrowBottom") {
                 this.y += this.speed;
-                this.y.style.top = `${this.y}px`
+                this.node.style.top = `${this.y}px`
             }
         })
     }

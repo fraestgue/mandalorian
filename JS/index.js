@@ -29,8 +29,8 @@ starBtnNode.addEventListener("click", startGame)
 // se pasa la funcion starGame como funcion de callback
 
 
-gameBoxNode.addEventListener("keydown", () => {
+//gameBoxNode.gameObj.mandalorianObj.movimiento()
 
-    gameObj.mandalorianObj.movimiento()
-})
+    
+
 
