@@ -17,6 +17,9 @@ function startGame () {
     // mostrar pantalla de juego
     gameSreenNode.style.display = "flex";
     gameObj = new Game () // se liga la class Game
+
+    gameObj.start()
+    gameObj.enemysAppear()
 }
 
 
@@ -24,3 +27,10 @@ function startGame () {
 // ADD EVENT LISTENER
 starBtnNode.addEventListener("click", startGame)
 // se pasa la funcion starGame como funcion de callback
+
+
+gameBoxNode.addEventListener("keydown", () => {
+
+    gameObj.mandalorianObj.movimiento()
+})
+

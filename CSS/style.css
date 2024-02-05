@@ -7,7 +7,12 @@ body {
     background-color: khaki;
     width:200px;
     height: 150px;
-    background-image: url(../images/preGameBackground.jpeg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+    /*background-image: url(../images/preGameBackground.jpeg);*/
 }
 
 #start-btn {
@@ -29,14 +34,14 @@ body {
 
   #game-box {
     background-color: khaki;
-    width:600px;
-    height: 600px;
+    width:900px;
+    height: 650px;
      /* default settings for game box */
   overflow: hidden; /* this will prevent element from been visible outside the game box */
   position: relative; /* this will allow elements to be positioned relative to the game-box */
   user-select: none; /* this will prevent elements from being highlighted */
 
-  background-image: url("");
+  background-image: url("../images/GameScreen.jpg");
   background-position: center;
   background-size: cover;
 

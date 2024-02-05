@@ -1,12 +1,12 @@
-class Mandaloriano {
+class Mandalorian {
 
     // propiedades del mandaloriano
 
     constructor () {
         this.x = 50; // posicion desde la izquierda de la pantalla del juego
         this.y = 300; // posicion desde la parte de arriba de la pantalla de juego
-        this.w = 40; // ancho del mandaloriano
-        this.h = 60; // alto del mandaloriano
+        this.w = 80; // ancho del mandaloriano
+        this.h = 120; // alto del mandaloriano
 
         // la imagen del mandaloriano (el Nodo)
         this.node = document.createElement("img")
@@ -25,14 +25,26 @@ class Mandaloriano {
         this.node.style.pointerEvents = "none";
         // la linea de arriba es para evitar interactuar con el elemento por error al clickar sobre el
 
+        this.speed = 20
+
 
     }
 
     // MÉTODOS DEL MANDALORIANO
 
+    movimiento () {
+        window.addEventListener("keydown", (event) => {
+            if (event.key === "ArrowTop") {
+                this.y -= this.speed;
+                this.y.style.top = `${this.y}px`
+            } else if (event.key === "ArrowBottom") {
+                this.y += this.speed;
+                this.y.style.top = `${this.y}px`
+            }
+        })
+    }
 
-
-
+    // AQUÍ DEBE IR ACCIÓN DE DISPARAR
 
 
 

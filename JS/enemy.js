@@ -1,17 +1,28 @@
 class Enemy {
 
-    constructor () {
+    constructor (type) {
 
+        this.x =gameBoxNode.offsetWidth // ancho del gamebox en numero (600)
 
-        this.w = 40;
-        this.h = 60;
+        if (type === "st1") {
+            this.y = Math.random() * 600; 
+        } else if (type === "st2") {
+            this.y = Math.random() * 600 ;
+        }
+
+        this.w;
+        this.h;
 
 
         this.node = document.createElement("img")
         if (type === "st1") {
             this.node.src ="../images/st1.png"
+            this.w = 150;
+            this.h = 120;
         } else if (type === "st2") {
             this.node.src ="../images/st2.png"
+            this.w = 80;
+            this.h = 120;
         }
 
         this.node.style.pointerEvents = "none";
@@ -38,8 +49,6 @@ class Enemy {
         this.node.style.left = `${this.x}px`
 
     }
-
-
 
 
 
