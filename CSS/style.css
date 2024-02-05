@@ -1,0 +1,47 @@
+body {
+    margin: 0;
+    background-color: darkred; 
+}
+
+#pre-game {
+    background-color: khaki;
+    width:200px;
+    height: 150px;
+    background-image: url(../images/preGameBackground.jpeg);
+}
+
+#start-btn {
+    background-color: azure;
+    color: red;
+    padding: 20px;
+    font-size: 20px;
+    margin-top: 40px;
+    border-radius: 10px; 
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+  }
+
+  #game-box {
+    background-color: khaki;
+    width:600px;
+    height: 600px;
+     /* default settings for game box */
+  overflow: hidden; /* this will prevent element from been visible outside the game box */
+  position: relative; /* this will allow elements to be positioned relative to the game-box */
+  user-select: none; /* this will prevent elements from being highlighted */
+
+  background-image: url("");
+  background-position: center;
+  background-size: cover;
+
+}
+
+#game-screen, #gameover-screen {
+    display: none;
+  }
