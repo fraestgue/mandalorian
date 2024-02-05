@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    background-image: url(../images/background.avif);
     background-color: darkred; 
 }
 
@@ -11,17 +12,25 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 50px;
+    margin: 260px;
     /*background-image: url(../images/preGameBackground.jpeg);*/
 }
 
 #start-btn {
     background-color: azure;
-    color: red;
+    color: black;
+    border-color: yellow;
     padding: 20px;
     font-size: 20px;
     margin-top: 40px;
-    border-radius: 10px; 
+    border-radius: 20px; 
+    transition: flex-grow 0.3s;
+}
+
+#start-btn b:hover{
+    height: 200px;
+    width: 140px;
+      
 }
 
 .container {
