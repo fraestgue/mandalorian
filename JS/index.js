@@ -20,7 +20,6 @@ function startGame () {
 
     gameObj.start()
     gameObj.enemysAppear()
-    gameObj.disparo()
 }
 
 
@@ -38,11 +37,8 @@ window.addEventListener("keydown", (event) => {
         gameObj.mandalorianObj.movimientoHaciaAbajo()
     }
    if (event.key === " ") {
-
-        gameObj.disparar()
-        console.log(event.key)
+        gameObj.disparar() 
     }
-    console.log(event.key)
 })
 
 

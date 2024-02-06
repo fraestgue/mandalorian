@@ -51,28 +51,34 @@ class Game {
 
     disparar () {
        
-    
-
             let nuevoDisparo = new Disparo (this.mandalorianObj.y);
             this.disparoArr.push(nuevoDisparo);
-
-            
-
-
-
-       
     }
 
     collitionCheckDisparoEnemys () {
         // necesito el disparto // this.disparoObj
         // necesito cada uno de los enemigos // eachEnemyObj
         this.disparoArr.forEach((eachDisparoObj) => {
-            this.enemyArr.forEach((eachEnemyObj) => {
+        this.enemyArr.forEach((eachEnemyObj) => {
+            if ( eachDisparoObj.x < eachEnemyObj.x + eachEnemyObj.w &&
+            eachDisparoObj.x + eachDisparoObj.w > eachEnemyObj.x && 
+            eachDisparoObj.y < eachEnemyObj.y + eachEnemyObj.h &&
+            eachDisparoObj.y + eachDisparoObj.h > eachEnemyObj.y) {
+                console.log ("el enemigo recibe el disparo")
 
-            })
+                // eliminar el enemigo y el disparo generado cuando colisionan 
+                this.enemyArr.splice(eachEnemyObj.index, 1);
+                this.disparoArr.splice(eachDisparoObj.index, 1);
+            }
+        }) 
+        // DETECTA LA COLISIÓN
 
+    })
+    }
 
-        })
+    eliminarElemigoAlcanzado() {
+        
+
     }
 
     collitionCheckMandalorianEnemys() {
@@ -96,6 +102,7 @@ class Game {
      gameOver () {
             clearInterval(this.gameIntervalId)
             clearInterval(this.enemysAppearIntervalId)
+            clearInterval(this.enemysAppearIntervalId1)
         
             // ocultamos la pagina de juego
             gameSreenNode.style.display = "none";
@@ -104,10 +111,10 @@ class Game {
             gameOverScreenNode.style.display = "flex";
     }
 
-    checkIfObstauloLeftGameBox() {
-        if (this.enemyArr[0] !== undefined && this.enemyArr[0].x < this.enemyArr[0].w) {
+    checkIfEnemyLeftGameBox() {
+        if (this.enemyArr[0] !== undefined && this.enemyArr[0].x < this.enemyArr[0].w -220) {
                 // si en el array hay al menos un elemento y si ese elmento salio del gamebox por la izquierda
-                console.log("obstaculo saliendo")
+                console.log("enemigo saliendo")
                 // remueve el elemento (REMOVER DE JS Y DEL DOM)
                 this.enemyArr[0].node.remove()
                 this.enemyArr.shift() // esto siginifica eliminalo del array
@@ -127,7 +134,10 @@ class Game {
             eachDisparo.movimientoAutomaticoDeDisparar();
         })
         this.collitionCheckMandalorianEnemys();
+        this.collitionCheckDisparoEnemys();
+        this.checkIfEnemyLeftGameBox()
       }
+
 
 
       start() {

@@ -43,8 +43,8 @@ body {
 
   #game-box {
     background-color: khaki;
-    width:900px;
-    height: 650px;
+    width: 750px;
+    height: 600px;
      /* default settings for game box */
   overflow: hidden; /* this will prevent element from been visible outside the game box */
   position: relative; /* this will allow elements to be positioned relative to the game-box */
