@@ -12,7 +12,7 @@ class Disparo {
 
         this.node = document.createElement("img")
 
-        this.node.src = "../images/disparoazul.png"
+        this.node.src = "./images/disparoazul.png"
 
         gameBoxNode.append(this.node)
 

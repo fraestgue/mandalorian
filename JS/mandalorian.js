@@ -15,7 +15,7 @@ class Mandalorian {
 
         // la imagen del mandaloriano (el Nodo)
         this.node = document.createElement("img")
-        this.node.src = "../images/mandaloriano.png"
+        this.node.src = "./images/mandaloriano.png"
 
         // agregarlo a la caja de juego
         gameBoxNode.append(this.node)
