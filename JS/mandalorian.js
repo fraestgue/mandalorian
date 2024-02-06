@@ -8,6 +8,11 @@ class Mandalorian {
         this.w = 80; // ancho del mandaloriano
         this.h = 120; // alto del mandaloriano
 
+        this.disparoObj = new Disparo ()
+
+        this.disparoObj.x = this.x + this.w;
+        this.disparoObj.y = this.y + 25
+
         // la imagen del mandaloriano (el Nodo)
         this.node = document.createElement("img")
         this.node.src = "../images/mandaloriano.png"
@@ -25,26 +30,35 @@ class Mandalorian {
         this.node.style.pointerEvents = "none";
         // la linea de arriba es para evitar interactuar con el elemento por error al clickar sobre el
 
-        this.speed = 20
+        this.speed = 40
+        this.disparoObj.speed = 30
 
 
     }
 
     // MÉTODOS DEL MANDALORIANO
 
-    movimiento () {
-        window.addEventListener("keydown", (event) => {
-            if (event.key === "ArrowUp") {
-                this.y -= this.speed;
-                this.node.style.top = `${this.y}px`
-            } else if (event.key === "ArrowBottom") {
-                this.y += this.speed;
-                this.node.style.top = `${this.y}px`
-            }
-        })
+    movimientoHaciaArriba () {
+        
+        this.y -= this.speed;
+        this.node.style.top = `${this.y}px`
+            
+    }
+
+    movimientoHaciaAbajo () {
+
+        this.y += this.speed;
+        this.node.style.top = `${this.y}px`
+
     }
 
     // AQUÍ DEBE IR ACCIÓN DE DISPARAR
+
+    /*disparar () {
+       this.disparoObj.x += this.disparoObj.speed
+       this.disparoObj.node.style.left = `${this.disparoObj.x}px`
+
+    }*/
 
 
 

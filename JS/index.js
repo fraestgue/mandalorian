@@ -20,6 +20,7 @@ function startGame () {
 
     gameObj.start()
     gameObj.enemysAppear()
+    gameObj.disparo()
 }
 
 
@@ -30,7 +31,29 @@ starBtnNode.addEventListener("click", startGame)
 
 
 //gameBoxNode.gameObj.mandalorianObj.movimiento()
+window.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowUp") {
+       gameObj.mandalorianObj.movimientoHaciaArriba()
+    } else if (event.key === "ArrowDown") {
+        gameObj.mandalorianObj.movimientoHaciaAbajo()
+    }
+   /* if (event.key === "a") {
+        gameObj.mandalorianObj.disparoObj.disparar()
+        console.log(event.key)
+    }*/
+    console.log(event.key)
+})
 
+
+
+
+
+
+
+// DOS funciones para el personaje: 
+
+// la primera mover hacia arriba (lineas 35 y 36)
+// la segunda el movimiento hacia abajo (38 y 39)
     
 
 

@@ -9,11 +9,18 @@ class Game {
 
 
         this.enemyArr = [];
-        this.enemyAppearFrecuency = 2000;
+        this.enemyAppearFrecuency1 = 3000;
+        this.enemyAppearFrecuency2 = 4000;
 
 
         this.gameIntervalId; // se deja vacio al principio, luego se alamacena el Id cuando empieza el intervalo
         this.enemysAppearIntervalId;
+        this.enemysAppearIntervalId1;
+
+        this.disparoArr = [];
+
+        this.disparoIntervalId;
+        this.disparoAppearFrecuency = 1000;
     }
 
     // MÉTODOS O ACCIONES DE JUEGO
@@ -22,18 +29,35 @@ class Game {
 
 
         this.enemysAppearIntervalId = setInterval (() => {
-            let positionAppear = Math.random() * 600;
+            let positionAppear1 = Math.random() * 600;
 
-            let nuevoEnemySt1 = new Enemy("st1", positionAppear);
+            let nuevoEnemySt1 = new Enemy("st1", positionAppear1);
             this.enemyArr.push(nuevoEnemySt1);
 
-            let nuevoEnemySt2 = new Enemy("st2", positionAppear);
+          
+        }, this.enemyAppearFrecuency1)
+
+        this.enemysAppearIntervalId1 = setInterval (() => {
+            let positionAppear2 = Math.random() * 600;
+
+
+            let nuevoEnemySt2 = new Enemy("st2", positionAppear2);
             this.enemyArr.push(nuevoEnemySt2);
 
+        }, this.enemyAppearFrecuency2)
+
+    }
+
+    disparo () {
+        this.disparoIntervalId = setInterval(() => {
+            let positionDisparoAppear = this.mandalorianObj.y +25
+
+            let nuevoDisparo = new Disparo (positionDisparoAppear);
+            this.disparoArr.push(nuevoDisparo);
 
 
-        }, this.enemyAppearFrecuency)
 
+        },  this.disparoAppearFrecuency)
     }
 
     collitionCheckMandalorianEnemys() {
@@ -77,11 +101,16 @@ class Game {
       }
 
       gameLoop() {
-        this.mandalorianObj.movimiento();
+        this.mandalorianObj.movimientoHaciaArriba();
+        this.mandalorianObj.movimientoHaciaAbajo();
         
         this.enemyArr.forEach((eachEnemyObj) => {
             eachEnemyObj.automaticMovement();
         });
+
+        this.disparoArr.forEach((eachDisparo) => {
+            eachDisparo.disparar();
+        })
         this.collitionCheckMandalorianEnemys();
       }
 

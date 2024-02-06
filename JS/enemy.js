@@ -17,11 +17,11 @@ class Enemy {
             this.node.src ="../images/st1.png"
             this.w = 150;
             this.h = 120;
-        } /*else if (type === "st2") {
+        } else if (type === "st2") {
             this.node.src ="../images/st2.png"
             this.w = 80;
             this.h = 120;
-        }*/
+        }
 
         this.node.style.pointerEvents = "none";
 

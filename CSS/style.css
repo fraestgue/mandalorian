@@ -13,7 +13,7 @@ body {
     justify-content: center;
     align-items: center;
     margin: 260px;
-    /*background-image: url(../images/preGameBackground.jpeg);*/
+   
 }
 
 #start-btn {
@@ -53,8 +53,16 @@ body {
   background-image: url("../images/GameScreen.jpg");
   background-position: center;
   background-size: cover;
-
 }
+
+/*#disparo {
+    background-color: cornflowerblue;
+    width: 15px;
+    height: 8px;
+    position: absolute;
+    /*top: 325px;
+    left: 130px;
+} */
 
 #game-screen, #gameover-screen {
     display: none;
