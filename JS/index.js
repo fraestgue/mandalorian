@@ -37,10 +37,11 @@ window.addEventListener("keydown", (event) => {
     } else if (event.key === "ArrowDown") {
         gameObj.mandalorianObj.movimientoHaciaAbajo()
     }
-   /* if (event.key === "a") {
-        gameObj.mandalorianObj.disparoObj.disparar()
+   if (event.key === " ") {
+
+        gameObj.disparar()
         console.log(event.key)
-    }*/
+    }
     console.log(event.key)
 })
 

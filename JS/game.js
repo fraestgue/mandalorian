@@ -7,6 +7,8 @@ class Game {
         // el mandaloriano (el Nodo)
         this.mandalorianObj = new Mandalorian (); // se liga la clase Mandalorian
 
+        this.disparoObj = new Disparo()
+
 
         this.enemyArr = [];
         this.enemyAppearFrecuency1 = 3000;
@@ -29,35 +31,48 @@ class Game {
 
 
         this.enemysAppearIntervalId = setInterval (() => {
-            let positionAppear1 = Math.random() * 600;
-
-            let nuevoEnemySt1 = new Enemy("st1", positionAppear1);
+            
+            let nuevoEnemySt1 = new Enemy("st1");
             this.enemyArr.push(nuevoEnemySt1);
 
           
         }, this.enemyAppearFrecuency1)
 
         this.enemysAppearIntervalId1 = setInterval (() => {
-            let positionAppear2 = Math.random() * 600;
+            
 
 
-            let nuevoEnemySt2 = new Enemy("st2", positionAppear2);
+            let nuevoEnemySt2 = new Enemy("st2");
             this.enemyArr.push(nuevoEnemySt2);
 
         }, this.enemyAppearFrecuency2)
 
     }
 
-    disparo () {
-        this.disparoIntervalId = setInterval(() => {
-            let positionDisparoAppear = this.mandalorianObj.y +25
+    disparar () {
+       
+    
 
-            let nuevoDisparo = new Disparo (positionDisparoAppear);
+            let nuevoDisparo = new Disparo (this.mandalorianObj.y);
             this.disparoArr.push(nuevoDisparo);
 
+            
 
 
-        },  this.disparoAppearFrecuency)
+
+       
+    }
+
+    collitionCheckDisparoEnemys () {
+        // necesito el disparto // this.disparoObj
+        // necesito cada uno de los enemigos // eachEnemyObj
+        this.disparoArr.forEach((eachDisparoObj) => {
+            this.enemyArr.forEach((eachEnemyObj) => {
+
+            })
+
+
+        })
     }
 
     collitionCheckMandalorianEnemys() {
@@ -109,7 +124,7 @@ class Game {
         });
 
         this.disparoArr.forEach((eachDisparo) => {
-            eachDisparo.disparar();
+            eachDisparo.movimientoAutomaticoDeDisparar();
         })
         this.collitionCheckMandalorianEnemys();
       }

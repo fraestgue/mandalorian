@@ -8,10 +8,7 @@ class Mandalorian {
         this.w = 80; // ancho del mandaloriano
         this.h = 120; // alto del mandaloriano
 
-        this.disparoObj = new Disparo ()
-
-        this.disparoObj.x = this.x + this.w;
-        this.disparoObj.y = this.y + 25
+       
 
         // la imagen del mandaloriano (el Nodo)
         this.node = document.createElement("img")
@@ -30,8 +27,8 @@ class Mandalorian {
         this.node.style.pointerEvents = "none";
         // la linea de arriba es para evitar interactuar con el elemento por error al clickar sobre el
 
-        this.speed = 40
-        this.disparoObj.speed = 30
+        this.speed = 80
+        
 
 
     }
