@@ -15,12 +15,12 @@ class Enemy {
         this.node = document.createElement("img")
         if (type === "st1") {
             this.node.src ="./images/st1.png"
-            this.w = 150;
-            this.h = 120;
+            this.w = 90;
+            this.h = 90;
         } else if (type === "st2") {
             this.node.src ="./images/st2.png"
             this.w = 80;
-            this.h = 120;
+            this.h = 90;
         }
 
         this.node.style.pointerEvents = "none";

@@ -7,7 +7,11 @@ class Game {
         // el mandaloriano (el Nodo)
         this.mandalorianObj = new Mandalorian (); // se liga la clase Mandalorian
 
-        this.disparoObj = new Disparo()
+        this.disparoObj = new Disparo();
+
+        this.enemyObj = new Enemy();
+
+        
 
 
         this.enemyArr = [];
@@ -21,8 +25,10 @@ class Game {
 
         this.disparoArr = [];
 
-        this.disparoIntervalId;
-        this.disparoAppearFrecuency = 1000;
+        this.disparoEnemigoArr =  [];
+
+        this.disparoEnemigoIntervalId;
+        this.disparoEnemigoAppearFrecuency = 3000;
     }
 
     // MÉTODOS O ACCIONES DE JUEGO
@@ -54,6 +60,24 @@ class Game {
             let nuevoDisparo = new Disparo (this.mandalorianObj.y);
             this.disparoArr.push(nuevoDisparo);
     }
+
+    disparoEnemigo () {
+
+      this.disparoEnemigoIntervalId = setInterval(() => {
+        let disparoEnemigoAleatorio = Math.floor(Math.random() * this.enemyArr.length)
+        this.disparoEnemigoArr.push(disparoEnemigoAleatorio)
+
+        console.log("enemigo disparando")
+
+      }, this.disparoEnemigoAppearFrecuency)
+      
+      /*this.disparoEnemigoIntervalId = setInterval(() => {
+
+        let nuevoDisparoEnemigo = new DisparoEnemigo (this.enemyObj.y, this.enemyObj.x)
+        this.disparoEnemigoArr.push(nuevoDisparoEnemigo)
+
+      }, this.disparoEnemigoAppearFrecuency)*/
+    } 
 
     collitionCheckDisparoEnemys () {
         // necesito el disparto // this.disparoObj
@@ -110,6 +134,7 @@ class Game {
             clearInterval(this.gameIntervalId)
             clearInterval(this.enemysAppearIntervalId)
             clearInterval(this.enemysAppearIntervalId1)
+            clearInterval(this.disparoEnemigoIntervalId)
         
             // ocultamos la pagina de juego
             gameSreenNode.style.display = "none";
@@ -118,7 +143,7 @@ class Game {
             gameOverScreenNode.style.display = "flex";
     }
 
-    checkIfEnemyLeftGameBox() {
+      checkIfEnemyLeftGameBox() {
         if (this.enemyArr[0] !== undefined && this.enemyArr[0].x < this.enemyArr[0].w -220) {
                 // si en el array hay al menos un elemento y si ese elmento salio del gamebox por la izquierda
                 console.log("enemigo saliendo")
@@ -127,6 +152,16 @@ class Game {
                 this.enemyArr.shift() // esto siginifica eliminalo del array
         }
        
+      }
+
+      checkDisparoLeftGameBox() {
+        if (this.disparoArr[0] !== undefined && this.disparoArr[0].x > this.disparoArr[0].w + 750) {
+          // si en el array hay al menos un elemento y si ese elmento salio del gamebox por la derecha
+          console.log("disparo saliendo")
+          // remueve el elemento (REMOVER DE JS Y DEL DOM)
+          this.disparoArr[0].node.remove()
+          this.disparoArr.shift() // esto siginifica eliminalo del array
+  }
       }
 
       gameLoop() {
@@ -140,9 +175,14 @@ class Game {
         this.disparoArr.forEach((eachDisparo) => {
             eachDisparo.movimientoAutomaticoDeDisparar();
         })
+        /*this.disparoEnemigoArr.forEach((eachDisparoEnemigo) => {
+          eachDisparoEnemigo.movimientoAutomaticoDeDispararEnemigo();
+        })*/
+        this.disparoEnemigo();
         this.collitionCheckMandalorianEnemys();
         this.collitionCheckDisparoEnemys();
-        this.checkIfEnemyLeftGameBox()
+        this.checkIfEnemyLeftGameBox();
+        this.checkDisparoLeftGameBox();
       }
 
 
