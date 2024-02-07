@@ -12,11 +12,12 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 260px;
+    margin: 400px;
+    margin-left: 450px;
    
 }
 
-#start-btn {
+#start-btn, #restart-btn {
     background-color: azure;
     color: black;
     border-color: yellow;
@@ -27,7 +28,7 @@ body {
     transition: flex-grow 0.3s;
 }
 
-#start-btn b:hover{
+#start-btn, #restart-btn b:hover{
     height: 200px;
     width: 140px;
       
@@ -43,8 +44,8 @@ body {
 
   #game-box {
     background-color: khaki;
-    width: 750px;
-    height: 600px;
+    width: 850px;
+    height: 700px;
      /* default settings for game box */
   overflow: hidden; /* this will prevent element from been visible outside the game box */
   position: relative; /* this will allow elements to be positioned relative to the game-box */
@@ -55,14 +56,8 @@ body {
   background-size: cover;
 }
 
-/*#disparo {
-    background-color: cornflowerblue;
-    width: 15px;
-    height: 8px;
-    position: absolute;
-    /*top: 325px;
-    left: 130px;
-} */
+
+
 
 #game-screen, #gameover-screen {
     display: none;

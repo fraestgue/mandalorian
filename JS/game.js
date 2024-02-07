@@ -50,6 +50,9 @@ class Game {
 
   disparoEnemigo() {
     this.disparoEnemigoIntervalId = setInterval(() => {
+      if (this.enemyArr.length === 0) {
+        return // no hagas nada si no hay elementos en el array
+      }
       let enemigoAleatorioIndex = Math.floor(
         Math.random() * this.enemyArr.length
       ); // primero obtenemos el indice aleatorio del enemigo dentro del array de enemigos
@@ -63,7 +66,7 @@ class Game {
       this.disparoEnemigoArr.push(nuevoDisparoEnemigo);
       // y aqui metemos el valor de nuevoDisparoEnemigo dentro del array de disparo enemigo
 
-      console.log("enemigo disparando");
+      // console.log("enemigo disparando");
     }, this.disparoEnemigoAppearFrecuency);
 
     /*this.disparoEnemigoIntervalId = setInterval(() => {
@@ -86,7 +89,7 @@ class Game {
           eachDisparoObj.y < eachEnemyObj.y + eachEnemyObj.h &&
           eachDisparoObj.y + eachDisparoObj.h > eachEnemyObj.y
         ) {
-          console.log("el enemigo recibe el disparo");
+          // console.log("el enemigo recibe el disparo");
 
           // eliminar el enemigo y el disparo generado cuando colisionan
           this.enemyArr[indiceEnemigo].node.remove();
@@ -117,9 +120,14 @@ class Game {
         this.mandalorianObj.y < eachDisparoEnemigo.y + eachDisparoEnemigo.h &&
         this.mandalorianObj.y + this.mandalorianObj.h > eachDisparoEnemigo.y
       ) {
-        console.log("mandaloriano recibe disparo")
+        // console.log("mandaloriano recibe disparo")
         // detecta el impacto del disparo con el mandaloriano
-        this.gameOver();
+        // reduce la cantidad de vidas del mandaloriano en 1
+        // hacer condicional si las vidas son 0 entonces gamenOver
+        this.mandalorianObj.lives -= 1
+        if (this.mandalorianObj.lives === 0) {
+           this.gameOver();
+        }
       }
     })
   }
@@ -135,8 +143,11 @@ class Game {
         this.mandalorianObj.y + this.mandalorianObj.h > eachEnemyObj.y
       ) {
         // Collision detected!
-        console.log("ha colisionado");
-        this.gameOver();
+        // console.log("ha colisionado");
+        this.mandalorianObj.lives -= 1
+        if (this.mandalorianObj.lives === 0) {
+           this.gameOver();
+        }
       }
     });
   }
@@ -147,7 +158,7 @@ class Game {
       this.enemyArr[0].x < this.enemyArr[0].w - 220
     ) {
       // si en el array hay al menos un elemento y si ese elmento salio del gamebox por la izquierda
-      console.log("enemigo saliendo");
+      // console.log("enemigo saliendo");
       // remueve el elemento (REMOVER DE JS Y DEL DOM)
       this.enemyArr[0].node.remove();
       this.enemyArr.shift(); // esto siginifica eliminalo del array
@@ -160,7 +171,7 @@ class Game {
       this.disparoArr[0].x > this.disparoArr[0].w + 750
     ) {
       // si en el array hay al menos un elemento y si ese elmento salio del gamebox por la derecha
-      console.log("disparo saliendo");
+      // console.log("disparo saliendo");
       // remueve el elemento (REMOVER DE JS Y DEL DOM)
       this.disparoArr[0].node.remove();
       this.disparoArr.shift(); // esto siginifica eliminalo del array
@@ -173,7 +184,7 @@ class Game {
       this.disparoEnemigoArr[0].x < this.disparoEnemigoArr[0].w - 40
     ) {
       // si en el array hay al menos un elemento y si ese elmento salio del gamebox por la izquierda
-      console.log("disparo enemigo saliendo");
+      // console.log("disparo enemigo saliendo");
       // remueve el elemento (REMOVER DE JS Y DEL DOM)
       this.disparoEnemigoArr[0].node.remove();
       this.disparoEnemigoArr.shift(); // esto siginifica eliminalo del array
@@ -217,6 +228,18 @@ class Game {
     clearInterval(this.enemysAppearIntervalId);
     clearInterval(this.enemysAppearIntervalId1);
     clearInterval(this.disparoEnemigoIntervalId);
+    this.enemyArr.forEach((eachEnemyObj) => {
+      eachEnemyObj.node.remove();
+    }); 
+    this.disparoArr.forEach((eachDisparo) => {
+      eachDisparo.node.remove();
+    });
+    this.disparoEnemigoArr.forEach((eachDisparoEnemigo) => {
+      eachDisparoEnemigo.node.remove();
+    });
+    this.mandalorianObj.node.remove()
+
+    // todos estos remove son para eliminar los objetos y no aparezcan congelados cuando reiniciamos el juego desde gameOver
 
     // ocultamos la pagina de juego
     gameSreenNode.style.display = "none";

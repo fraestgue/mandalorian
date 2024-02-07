@@ -7,6 +7,7 @@ class Mandalorian {
         this.y = 300; // posicion desde la parte de arriba de la pantalla de juego
         this.w = 80; // ancho del mandaloriano
         this.h = 120; // alto del mandaloriano
+        this.lives = 3; 
 
        
 

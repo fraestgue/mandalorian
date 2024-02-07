@@ -4,12 +4,13 @@ const gameSreenNode = document.querySelector("#game-screen");
 const gameOverScreenNode = document.querySelector("#gameover-screen")
 const starBtnNode = document.querySelector("#start-btn")
 const gameBoxNode = document.querySelector("#game-box")
+const reStartBtnNode = document.querySelector("#restart-btn")
 let gameObj; // en la pantalla inicial el juego no existe aun 
 
 
 // FUNCION PRINCIPAL
 function startGame () {
-    console.log("clicando")
+    // console.log("clicando")
 
     // ocultar pre-game screen
     preGrameScreenNode.style.display = "none";
@@ -21,6 +22,11 @@ function startGame () {
     gameObj.start()
     gameObj.enemysAppear()
     gameObj.disparoEnemigo()
+}
+
+function backToRestart () {
+    gameOverScreenNode.style.display = "none";
+    preGrameScreenNode.style.display = "flex";
 }
 
 
@@ -41,6 +47,8 @@ window.addEventListener("keydown", (event) => {
         gameObj.disparar() 
     }
 })
+
+reStartBtnNode.addEventListener("click", backToRestart)
 
 
 
