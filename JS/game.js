@@ -107,6 +107,23 @@ class Game {
     });
   }
 
+  collitonCheckDisparoEnemigoMandaloriano() {
+    // necesito el mandaloriano // this.mandalorianObj
+    // necesito el disparo enemigo // this.disparoEnemigoObj
+    this.disparoEnemigoArr.forEach((eachDisparoEnemigo) => {
+      if (
+        this.mandalorianObj.x < eachDisparoEnemigo.x + eachDisparoEnemigo.w &&
+        this.mandalorianObj.x + this.mandalorianObj.w > eachDisparoEnemigo.x &&
+        this.mandalorianObj.y < eachDisparoEnemigo.y + eachDisparoEnemigo.h &&
+        this.mandalorianObj.y + this.mandalorianObj.h > eachDisparoEnemigo.y
+      ) {
+        console.log("mandaloriano recibe disparo")
+        // detecta el impacto del disparo con el mandaloriano
+        this.gameOver();
+      }
+    })
+  }
+
   collitionCheckMandalorianEnemys() {
     this.enemyArr.forEach((eachEnemyObj) => {
       // necesito el mandalorian // this.mandalorianObj
@@ -185,6 +202,7 @@ class Game {
     this.checkIfEnemyLeftGameBox();
     this.checkDisparoLeftGameBox();
     this.checkDisparoEnemigoLeftGameBox();
+    this.collitonCheckDisparoEnemigoMandaloriano();
   }
 
   start() {
