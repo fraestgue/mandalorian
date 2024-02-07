@@ -37,16 +37,22 @@ class Mandalorian {
     // MÉTODOS DEL MANDALORIANO
 
     movimientoHaciaArriba () {
-        
-        this.y -= this.speed;
-        this.node.style.top = `${this.y}px`
+        // hacer un if gameBoxNode.offsetTop y gameBoxNode.offsetHeight
+       // if (this.y < gameBoxNode.offsetHeight || this.y > gameBoxNode.offsetTop) {
+             this.y -= this.speed;
+            this.node.style.top = `${this.y}px`
+       // }
+       
             
     }
 
     movimientoHaciaAbajo () {
 
-        this.y += this.speed;
-        this.node.style.top = `${this.y}px`
+       // if (this.y < gameBoxNode.offsetHeight || this.y > gameBoxNode.offsetTop) {
+            this.y += this.speed;
+            this.node.style.top = `${this.y}px`
+      //  }
+        
 
     }
 

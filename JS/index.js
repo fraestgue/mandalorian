@@ -5,7 +5,11 @@ const gameOverScreenNode = document.querySelector("#gameover-screen")
 const starBtnNode = document.querySelector("#start-btn")
 const gameBoxNode = document.querySelector("#game-box")
 const reStartBtnNode = document.querySelector("#restart-btn")
+const music = new Audio("./sonidos/bsos.mp3")
+const playBtn = document.querySelector("#playerBtn")
+const pauseBtn = document.querySelector("#pauseBtn")
 let gameObj; // en la pantalla inicial el juego no existe aun 
+const disparoM = new Audio("./sonidos/disparo1.mp3")
 
 
 // FUNCION PRINCIPAL
@@ -35,6 +39,14 @@ function backToRestart () {
 starBtnNode.addEventListener("click", startGame)
 // se pasa la funcion starGame como funcion de callback
 
+playBtn.addEventListener("click", () => {
+    music.play()
+})
+
+pauseBtn.addEventListener("click", () => {
+    music.pause()
+})
+
 
 //gameBoxNode.gameObj.mandalorianObj.movimiento()
 window.addEventListener("keydown", (event) => {
@@ -45,6 +57,7 @@ window.addEventListener("keydown", (event) => {
     }
    if (event.key === " ") {
         gameObj.disparar() 
+        disparoM.play()
     }
 })
 
