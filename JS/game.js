@@ -58,28 +58,35 @@ class Game {
     collitionCheckDisparoEnemys () {
         // necesito el disparto // this.disparoObj
         // necesito cada uno de los enemigos // eachEnemyObj
-        this.disparoArr.forEach((eachDisparoObj) => {
-        this.enemyArr.forEach((eachEnemyObj) => {
+        this.disparoArr.forEach((eachDisparoObj, indicenDisparo) => {
+        this.enemyArr.forEach((eachEnemyObj, indiceEnemigo) => {
             if ( eachDisparoObj.x < eachEnemyObj.x + eachEnemyObj.w &&
-            eachDisparoObj.x + eachDisparoObj.w > eachEnemyObj.x && 
+            eachDisparoObj.x + eachDisparoObj.w > eachEnemyObj.x + (eachEnemyObj.w/2) && 
             eachDisparoObj.y < eachEnemyObj.y + eachEnemyObj.h &&
             eachDisparoObj.y + eachDisparoObj.h > eachEnemyObj.y) {
                 console.log ("el enemigo recibe el disparo")
 
                 // eliminar el enemigo y el disparo generado cuando colisionan 
-                this.enemyArr.splice(eachEnemyObj.index, 1);
-                this.disparoArr.splice(eachDisparoObj.index, 1);
+              this.enemyArr[indiceEnemigo].node.remove();
+              this.disparoArr[indicenDisparo].node.remove();
+              this.enemyArr.splice(indiceEnemigo, 1);
+              this.disparoArr.splice(indicenDisparo, 1);
+
+              /* 
+              eachEnemyObj.node.remove()
+              eachDisparoObj.node.remove()
+
+              ESTO TENDRÍA LA MISMA FUNCIONALIDAD QUE EL CODIGO DE ARRIBA (LINEAS 70 Y 71)
+
+              */
             }
+            
         }) 
         // DETECTA LA COLISIÓN
-
+       
     })
     }
 
-    eliminarElemigoAlcanzado() {
-        
-
-    }
 
     collitionCheckMandalorianEnemys() {
         this.enemyArr.forEach((eachEnemyObj) => {
