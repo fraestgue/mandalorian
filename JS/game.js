@@ -64,8 +64,14 @@ class Game {
     disparoEnemigo () {
 
       this.disparoEnemigoIntervalId = setInterval(() => {
-        let disparoEnemigoAleatorio = Math.floor(Math.random() * this.enemyArr.length)
-        this.disparoEnemigoArr.push(disparoEnemigoAleatorio)
+        let enemigoAleatorioIndex = Math.floor(Math.random() * this.enemyArr.length) // primero obtenemos el indice aleatorio del enemigo dentro del array de enemigos
+        let enemigoAleatorio = this.enemyArr[enemigoAleatorioIndex];
+        // obtenemos el enemigo aleatorio pasandole el indice al array
+        let nuevoDisparoEnemigo = new DisparoEnemigo(enemigoAleatorio.y, enemigoAleatorio.x) // cada nuevo disparo enemigo tiene que tener la posicion y e x del enemigo aleatorio que estamos cogiendo 
+
+        this.disparoEnemigoArr.push(nuevoDisparoEnemigo)
+        // y aqui metemos el valor de nuevoDisparoEnemigo dentro del array de disparo enemigo
+        
 
         console.log("enemigo disparando")
 
@@ -178,7 +184,7 @@ class Game {
         /*this.disparoEnemigoArr.forEach((eachDisparoEnemigo) => {
           eachDisparoEnemigo.movimientoAutomaticoDeDispararEnemigo();
         })*/
-        this.disparoEnemigo();
+        
         this.collitionCheckMandalorianEnemys();
         this.collitionCheckDisparoEnemys();
         this.checkIfEnemyLeftGameBox();
