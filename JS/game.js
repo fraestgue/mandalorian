@@ -49,7 +49,7 @@ class Game {
 
   aliadosAppear() {
     this.aliadosIntervalId = setInterval(() => {
-      let nuevoAliado = new Aliados ("aliado");
+      let nuevoAliado = new Aliados ();
       this.aliadosArr.push(nuevoAliado);
 
     }, this.aliadosAppearFrecuency)
@@ -127,7 +127,7 @@ class Game {
     // necesito el disparo del mandaloriano // this.disparoObj
     // necesito cada uno de los aliados // eachAliadoObj
     this.disparoArr.forEach((eachDisparoObj, indicenDisparo) => {
-      this.enemyArr.forEach((eachAliadoObj, indiceAliado) => {
+      this.aliadosArr.forEach((eachAliadoObj, indiceAliado) => {
         if (
           eachDisparoObj.x < eachAliadoObj.x + eachAliadoObj.w &&
           eachDisparoObj.x + eachDisparoObj.w >
@@ -142,6 +142,9 @@ class Game {
           this.disparoArr[indicenDisparo].node.remove();
           this.aliadosArr.splice(indiceAliado, 1);
           this.disparoArr.splice(indicenDisparo, 1);
+          this.mandalorianObj.lives -= 1
+          if (this.mandalorianObj.lives === 0) {
+            this.gameOver();
 
           /* 
               eachAliadoObj.node.remove()
@@ -151,6 +154,7 @@ class Game {
 
               */
         }
+      }
       });
       
     });
@@ -159,7 +163,7 @@ class Game {
   collitonCheckDisparoEnemigoMandaloriano() {
     // necesito el mandaloriano // this.mandalorianObj
     // necesito el disparo enemigo // this.disparoEnemigoObj
-    this.disparoEnemigoArr.forEach((eachDisparoEnemigo) => {
+    this.disparoEnemigoArr.forEach((eachDisparoEnemigo, disparoEnemigoIndex) => {
       if (
         this.mandalorianObj.x < eachDisparoEnemigo.x + eachDisparoEnemigo.w &&
         this.mandalorianObj.x + this.mandalorianObj.w > eachDisparoEnemigo.x &&
@@ -171,6 +175,9 @@ class Game {
         // reduce la cantidad de vidas del mandaloriano en 1
         // hacer condicional si las vidas son 0 entonces gamenOver
         this.mandalorianObj.lives -= 1
+        eachDisparoEnemigo.node.remove()
+        this.disparoEnemigoArr.splice(disparoEnemigoIndex, 1)
+        console.log(this.mandalorianObj.lives)
         if (this.mandalorianObj.lives === 0) {
            this.gameOver();
         }
@@ -179,7 +186,7 @@ class Game {
   }
 
   collitionCheckMandalorianEnemys() {
-    this.enemyArr.forEach((eachEnemyObj) => {
+    this.enemyArr.forEach((eachEnemyObj, enemyIndex) => {
       // necesito el mandalorian // this.mandalorianObj
       // necesito cada uno de los enemys // eachEnemyObj
       if (
@@ -191,6 +198,8 @@ class Game {
         // Collision detected!
         // console.log("ha colisionado");
         this.mandalorianObj.lives -= 1
+        eachEnemyObj.node.remove()
+        this.enemyArr.splice(enemyIndex, 1)
         if (this.mandalorianObj.lives === 0) {
            this.gameOver();
         }

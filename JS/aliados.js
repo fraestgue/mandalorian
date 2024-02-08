@@ -1,5 +1,5 @@
 class Aliados {
-    constructor (type) {
+    constructor () {
 
         this.x =gameBoxNode.offsetWidth // ancho del gamebox en numero (600)
 
@@ -12,38 +12,39 @@ class Aliados {
 
 
         this.node = document.createElement("img")
-        this.type = ["c3po", "chiwaka", "esunatrampa", "ewok", "jawa", "r2d2"]
-        this.type.forEach((eachType) => {
-            if (eachType === "c3po") {
+        this.possibleType = ["c3po", "chiwaka", "esunatrampa", "ewok", "jawa", "r2d2"]
+        this.typeAleatorioIndex = Math.floor(Math.random() * this.possibleType.length)
+        this.type = this.possibleType[this.typeAleatorioIndex]
+    
+            if (this.type === "c3po") {
             this.node.src ="./images/c3po.png"
             this.w = 50;
             this.h = 65;
-            } else if (eachType === "chiwaka") {
+            } else if (this.type === "chiwaka") {
             this.node.src ="./images/chiwaka.png"
             this.w = 50;
             this.h = 65;
-            } else if (eachType === "esunatrampa") {
+            } else if (this.type === "esunatrampa") {
             this.node.src ="./images/esunatrampa.png"
             this.w = 50;
             this.h = 65;
-            } else if (eachType === "ewok") {
+            } else if (this.type === "ewok") {
             this.node.src ="./images/ewok.png"
             this.w = 50;
             this.h = 65;
-            } else if (eachType === "jawa") {
+            } else if (this.type === "jawa") {
             this.node.src ="./images/jawa.png"
             this.w = 50;
             this.h = 65;
-            } else if (eachType === "r2d2") {
+            } else if (this.type === "r2d2") {
             this.node.src ="./images/r2d2.png"
             this.w = 50;
             this.h = 65;
         } 
-        })
+        
         
 
-        this.typeAleatorioIndex = Math.floor(Math.random() * this.type.length)
-        this.aliado = type[this.typeAleatorioIndex]
+       
 
         this.node.style.pointerEvents = "none";
 
@@ -58,6 +59,7 @@ class Aliados {
         this.node.style.left = `${this.x}px`
 
         this.speed = 2;
+        console.log(this.x, this.y, this.node.src)
 
     }
 
