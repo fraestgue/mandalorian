@@ -26,6 +26,7 @@ function startGame () {
     gameObj.start()
     gameObj.enemysAppear()
     gameObj.disparoEnemigo()
+    gameObj.aliadosAppear()
 }
 
 function backToRestart () {

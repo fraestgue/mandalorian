@@ -28,7 +28,7 @@ class Mandalorian {
         this.node.style.pointerEvents = "none";
         // la linea de arriba es para evitar interactuar con el elemento por error al clickar sobre el
 
-        this.speed = 80
+        this.speed = 40
         
 
 

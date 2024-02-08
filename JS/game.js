@@ -27,6 +27,10 @@ class Game {
 
     this.disparoEnemigoIntervalId;
     this.disparoEnemigoAppearFrecuency = 1500;
+
+    this.aliadosIntervalId;
+    this.aliadosArr = [];
+    this.aliadosAppearFrecuency = 10000;
   }
 
   // MÉTODOS O ACCIONES DE JUEGO
@@ -41,6 +45,15 @@ class Game {
       let nuevoEnemySt2 = new Enemy("st2");
       this.enemyArr.push(nuevoEnemySt2);
     }, this.enemyAppearFrecuency2);
+  }
+
+  aliadosAppear() {
+    this.aliadosIntervalId = setInterval(() => {
+      let nuevoAliado = new Aliados ("aliado");
+      this.aliadosArr.push(nuevoAliado);
+
+    }, this.aliadosAppearFrecuency)
+
   }
 
   disparar() {
@@ -110,6 +123,39 @@ class Game {
     });
   }
 
+  collitionCheckDisparoMAliado() {
+    // necesito el disparo del mandaloriano // this.disparoObj
+    // necesito cada uno de los aliados // eachAliadoObj
+    this.disparoArr.forEach((eachDisparoObj, indicenDisparo) => {
+      this.enemyArr.forEach((eachAliadoObj, indiceAliado) => {
+        if (
+          eachDisparoObj.x < eachAliadoObj.x + eachAliadoObj.w &&
+          eachDisparoObj.x + eachDisparoObj.w >
+            eachAliadoObj.x + eachAliadoObj.w / 2 &&
+          eachDisparoObj.y < eachAliadoObj.y + eachAliadoObj.h &&
+          eachDisparoObj.y + eachDisparoObj.h > eachAliadoObj.y
+        ) {
+          console.log("el Aliado recibe el disparo");
+
+          // eliminar el Aliado y el disparo generado cuando colisionan
+          this.aliadosArr[indiceAliado].node.remove();
+          this.disparoArr[indicenDisparo].node.remove();
+          this.aliadosArr.splice(indiceAliado, 1);
+          this.disparoArr.splice(indicenDisparo, 1);
+
+          /* 
+              eachAliadoObj.node.remove()
+              eachDisparoObj.node.remove()
+
+              ESTO TENDRÍA LA MISMA FUNCIONALIDAD QUE EL CODIGO DE ARRIBA (LINEAS 70 Y 71)
+
+              */
+        }
+      });
+      
+    });
+  }
+
   collitonCheckDisparoEnemigoMandaloriano() {
     // necesito el mandaloriano // this.mandalorianObj
     // necesito el disparo enemigo // this.disparoEnemigoObj
@@ -165,6 +211,19 @@ class Game {
     }
   }
 
+  checkAliadoLeftGameBox () {
+    if (
+      this.aliadosArr[0] !== undefined &&
+      this.aliadosArr[0].x < this.aliadosArr[0].w - 220
+    ) {
+      // si en el array hay al menos un elemento y si ese elmento salio del gamebox por la izquierda
+      // console.log("aliado saliendo");
+      // remueve el elemento (REMOVER DE JS Y DEL DOM)
+      this.aliadosArr[0].node.remove();
+      this.aliadosArr.shift(); // esto siginifica eliminalo del array
+    }
+  }
+
   checkDisparoLeftGameBox() {
     if (
       this.disparoArr[0] !== undefined &&
@@ -204,9 +263,15 @@ class Game {
     this.disparoArr.forEach((eachDisparo) => {
       eachDisparo.movimientoAutomaticoDeDisparar();
     });
+
     this.disparoEnemigoArr.forEach((eachDisparoEnemigo) => {
       eachDisparoEnemigo.movimientoAutomaticoDeDispararEnemigo();
     });
+
+    this.aliadosArr.forEach((eachAliado) => {
+      eachAliado.movimientoAliados();
+    })
+
 
     this.collitionCheckMandalorianEnemys();
     this.collitionCheckDisparoEnemys();
@@ -214,6 +279,8 @@ class Game {
     this.checkDisparoLeftGameBox();
     this.checkDisparoEnemigoLeftGameBox();
     this.collitonCheckDisparoEnemigoMandaloriano();
+    this.collitionCheckDisparoMAliado();
+    this.checkAliadoLeftGameBox();
   }
 
   start() {
@@ -228,16 +295,25 @@ class Game {
     clearInterval(this.enemysAppearIntervalId);
     clearInterval(this.enemysAppearIntervalId1);
     clearInterval(this.disparoEnemigoIntervalId);
+    clearInterval(this.aliadosIntervalId);
+
     this.enemyArr.forEach((eachEnemyObj) => {
       eachEnemyObj.node.remove();
     }); 
+
     this.disparoArr.forEach((eachDisparo) => {
       eachDisparo.node.remove();
     });
+
     this.disparoEnemigoArr.forEach((eachDisparoEnemigo) => {
       eachDisparoEnemigo.node.remove();
     });
+
     this.mandalorianObj.node.remove()
+
+    this.aliadosArr.forEach((eachAliado) => {
+      eachAliado.node.remove()
+    });
 
     // todos estos remove son para eliminar los objetos y no aparezcan congelados cuando reiniciamos el juego desde gameOver
 
