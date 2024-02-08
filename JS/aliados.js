@@ -1,7 +1,7 @@
 class Aliados {
     constructor () {
 
-        this.x =gameBoxNode.offsetWidth // ancho del gamebox en numero (600)
+        this.x = gameBoxNode.offsetWidth // ancho del gamebox en numero (600)
 
         
         this.y = Math.random() * 600; 
@@ -42,9 +42,6 @@ class Aliados {
             this.h = 65;
         } 
         
-        
-
-       
 
         this.node.style.pointerEvents = "none";
 
@@ -59,7 +56,7 @@ class Aliados {
         this.node.style.left = `${this.x}px`
 
         this.speed = 2;
-        console.log(this.x, this.y, this.node.src)
+        // console.log(this.x, this.y, this.node.src)
 
     }
 
@@ -69,6 +66,5 @@ class Aliados {
         
         this.x -= this.speed
         this.node.style.left = `${this.x}px`
-
     }
 }

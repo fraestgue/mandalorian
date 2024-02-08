@@ -2,7 +2,7 @@ class Enemy {
 
     constructor (type) {
 
-        this.x =gameBoxNode.offsetWidth // ancho del gamebox en numero (600)
+        this.x = gameBoxNode.offsetWidth // ancho del gamebox en numero (600)
 
         
         this.y = Math.random() * 600; 
@@ -45,11 +45,8 @@ class Enemy {
         
         this.x -= this.speed
         this.node.style.left = `${this.x}px`
-
     }
-
-
-
+    
 }
 
 

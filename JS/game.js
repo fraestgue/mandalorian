@@ -135,7 +135,7 @@ class Game {
           eachDisparoObj.y < eachAliadoObj.y + eachAliadoObj.h &&
           eachDisparoObj.y + eachDisparoObj.h > eachAliadoObj.y
         ) {
-          console.log("el Aliado recibe el disparo");
+          // console.log("el Aliado recibe el disparo");
 
           // eliminar el Aliado y el disparo generado cuando colisionan
           this.aliadosArr[indiceAliado].node.remove();
@@ -177,7 +177,7 @@ class Game {
         this.mandalorianObj.lives -= 1
         eachDisparoEnemigo.node.remove()
         this.disparoEnemigoArr.splice(disparoEnemigoIndex, 1)
-        console.log(this.mandalorianObj.lives)
+        // console.log(this.mandalorianObj.lives)
         if (this.mandalorianObj.lives === 0) {
            this.gameOver();
         }

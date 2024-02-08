@@ -9,8 +9,6 @@ class Mandalorian {
         this.h = 120; // alto del mandaloriano
         this.lives = 3; 
 
-       
-
         // la imagen del mandaloriano (el Nodo)
         this.node = document.createElement("img")
         this.node.src = "./images/mandaloriano.png"
@@ -30,39 +28,28 @@ class Mandalorian {
 
         this.speed = 40
         
-
-
     }
 
     // MÉTODOS DEL MANDALORIANO
 
     movimientoHaciaArriba () {
         // hacer un if gameBoxNode.offsetTop y gameBoxNode.offsetHeight
-       // if (this.y < gameBoxNode.offsetHeight || this.y > gameBoxNode.offsetTop) {
-             this.y -= this.speed;
-            this.node.style.top = `${this.y}px`
-       // }
        
-            
+            if (this.y + this.h > gameBoxNode.offsetTop) {
+                this.y -= this.speed;
+                this.node.style.top = `${this.y}px`
+            }      
     }
 
     movimientoHaciaAbajo () {
 
-       // if (this.y < gameBoxNode.offsetHeight || this.y > gameBoxNode.offsetTop) {
+        if (this.y + this.h < gameBoxNode.offsetHeight) {
             this.y += this.speed;
             this.node.style.top = `${this.y}px`
-      //  }
-        
-
+        }
     }
 
-    // AQUÍ DEBE IR ACCIÓN DE DISPARAR
-
-    /*disparar () {
-       this.disparoObj.x += this.disparoObj.speed
-       this.disparoObj.node.style.left = `${this.disparoObj.x}px`
-
-    }*/
+   
 
 
 
