@@ -17,7 +17,7 @@
 
     <!-- PRE GAME SCREEN-->
     <div id="pre-game" class="container">
-        <img src="./images/preGameBackground.jpeg" width="600" alt="fondo">
+        <img id ="pregameimg" src="./images/preGameBackground.jpeg" width="600" alt="fondo">
         <button id="start-btn"><b>Start!</b></button>
     </div>
 
@@ -25,8 +25,11 @@
 
     <!-- GAME SCREEN-->
     <div id="game-screen" class="container">
+      <h2 id="score">Score: <span>0</span></h2>
+      <h2 id="live">Lives: <span>3</span></h2>
         <!-- el panel de Game para puntuacion e instrucciones debe añadirese aquí (dentro de la game-screen pero fuera de la game-box) -->
         <div id="game-box">
+          <div id="lives"></div>
             <div id="disparo"></div>
           <!-- Los elementos de juego se añadirán aquí a través de la manipulación de DOM solo cuando empiece el juego -->
         </div>

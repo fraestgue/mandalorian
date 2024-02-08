@@ -4,16 +4,19 @@ body {
     background-color: darkred; 
 }
 
+#score, #live {
+    color: white;
+}
+
+
+#pregameimg {
+    width: 800px;
+    height: 500px;
+}
+
 #pre-game {
-    background-color: khaki;
-    width:200px;
-    height: 150px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 400px;
-    margin-left: 450px;
+   
    
 }
 
@@ -25,11 +28,10 @@ body {
     font-size: 20px;
     margin-top: 40px;
     border-radius: 20px; 
-    transition: flex-grow 0.3s;
 }
 
 #start-btn, #restart-btn b:hover{
-    height: 200px;
+    height: 100px;
     width: 140px;
       
 }
@@ -44,7 +46,7 @@ body {
 
   #game-box {
     background-color: khaki;
-    width: 850px;
+    width: 1200px;
     height: 700px;
      /* default settings for game box */
   overflow: hidden; /* this will prevent element from been visible outside the game box */

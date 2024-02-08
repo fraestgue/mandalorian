@@ -6,10 +6,14 @@ const starBtnNode = document.querySelector("#start-btn")
 const gameBoxNode = document.querySelector("#game-box")
 const reStartBtnNode = document.querySelector("#restart-btn")
 const music = new Audio("./sonidos/bsos.mp3")
+music.volume = 0.1;
 const playBtn = document.querySelector("#playerBtn")
 const pauseBtn = document.querySelector("#pauseBtn")
 let gameObj; // en la pantalla inicial el juego no existe aun 
 const disparoM = new Audio("./sonidos/disparo1.mp3")
+disparoM.volume = 0.05;
+const scoreNode = document.querySelector("#score span");
+const livesNode = document.querySelector("#live span");
 
 
 // FUNCION PRINCIPAL
@@ -27,6 +31,8 @@ function startGame () {
     gameObj.enemysAppear()
     gameObj.disparoEnemigo()
     gameObj.aliadosAppear()
+
+    
 }
 
 function backToRestart () {

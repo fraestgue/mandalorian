@@ -2,7 +2,7 @@ class Disparo {
 
     constructor (posicionDelMandaloriano) {
 
-        this.x = gameBoxNode.offsetWidth - 675
+        this.x = gameBoxNode.offsetWidth - 1100
         this.y =  posicionDelMandaloriano + 25; // aqui se le suma la posicion actual del unico Mandaloriano que deberia haber en el juego
         this.w = 30;
         this.h= 4;

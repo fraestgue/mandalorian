@@ -31,6 +31,9 @@ class Game {
     this.aliadosIntervalId;
     this.aliadosArr = [];
     this.aliadosAppearFrecuency = 10000;
+
+    this.score = 0;
+    this.lives = 3;
   }
 
   // MÉTODOS O ACCIONES DE JUEGO
@@ -109,7 +112,8 @@ class Game {
           this.disparoArr[indicenDisparo].node.remove();
           this.enemyArr.splice(indiceEnemigo, 1);
           this.disparoArr.splice(indicenDisparo, 1);
-
+          scoreNode.innerText = Number.parseInt(scoreNode.innerText)+ 40
+          
           /* 
               eachEnemyObj.node.remove()
               eachDisparoObj.node.remove()
@@ -142,9 +146,7 @@ class Game {
           this.disparoArr[indicenDisparo].node.remove();
           this.aliadosArr.splice(indiceAliado, 1);
           this.disparoArr.splice(indicenDisparo, 1);
-          this.mandalorianObj.lives -= 1
-          if (this.mandalorianObj.lives === 0) {
-            this.gameOver();
+          scoreNode.innerText = Number.parseInt(scoreNode.innerText) - 60
 
           /* 
               eachAliadoObj.node.remove()
@@ -153,7 +155,7 @@ class Game {
               ESTO TENDRÍA LA MISMA FUNCIONALIDAD QUE EL CODIGO DE ARRIBA (LINEAS 70 Y 71)
 
               */
-        }
+        
       }
       });
       
@@ -174,9 +176,12 @@ class Game {
         // detecta el impacto del disparo con el mandaloriano
         // reduce la cantidad de vidas del mandaloriano en 1
         // hacer condicional si las vidas son 0 entonces gamenOver
+       
         this.mandalorianObj.lives -= 1
         eachDisparoEnemigo.node.remove()
         this.disparoEnemigoArr.splice(disparoEnemigoIndex, 1)
+        
+        livesNode.innerText = Number.parseInt(livesNode.innerText) - 1
         // console.log(this.mandalorianObj.lives)
         if (this.mandalorianObj.lives === 0) {
            this.gameOver();
@@ -200,6 +205,7 @@ class Game {
         this.mandalorianObj.lives -= 1
         eachEnemyObj.node.remove()
         this.enemyArr.splice(enemyIndex, 1)
+        livesNode.innerText = Number.parseInt(livesNode.innerText) - 1
         if (this.mandalorianObj.lives === 0) {
            this.gameOver();
         }
@@ -217,6 +223,7 @@ class Game {
       // remueve el elemento (REMOVER DE JS Y DEL DOM)
       this.enemyArr[0].node.remove();
       this.enemyArr.shift(); // esto siginifica eliminalo del array
+      scoreNode.innerText = Number.parseInt(scoreNode.innerText) - 20
     }
   }
 
@@ -230,6 +237,7 @@ class Game {
       // remueve el elemento (REMOVER DE JS Y DEL DOM)
       this.aliadosArr[0].node.remove();
       this.aliadosArr.shift(); // esto siginifica eliminalo del array
+      scoreNode.innerText = Number.parseInt(scoreNode.innerText)+ 50
     }
   }
 
@@ -323,6 +331,9 @@ class Game {
     this.aliadosArr.forEach((eachAliado) => {
       eachAliado.node.remove()
     });
+
+    scoreNode.innerText = this.score
+    livesNode.innerText = this.lives
 
     // todos estos remove son para eliminar los objetos y no aparezcan congelados cuando reiniciamos el juego desde gameOver
 

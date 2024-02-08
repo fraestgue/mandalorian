@@ -35,7 +35,7 @@ class Mandalorian {
     movimientoHaciaArriba () {
         // hacer un if gameBoxNode.offsetTop y gameBoxNode.offsetHeight
        
-            if (this.y + this.h > gameBoxNode.offsetTop) {
+            if (this.y + this.h > gameBoxNode.offsetTop - 120) {
                 this.y -= this.speed;
                 this.node.style.top = `${this.y}px`
             }      
