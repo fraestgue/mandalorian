@@ -14,6 +14,12 @@ const disparoM = new Audio("./sonidos/disparo1.mp3")
 disparoM.volume = 0.05;
 const scoreNode = document.querySelector("#score span");
 const livesNode = document.querySelector("#live span");
+const groguSound = new Audio("./sonidos/grogu.mp3");
+groguSound.volume = 0.1;
+const dañoMando = new Audio("./sonidos/dañomando.mp3");
+dañoMando.volume = 0.07;
+const dañoAliado = new Audio("./sonidos/dañoaliado.mp3");
+dañoAliado.volume = 0.07;
 
 
 // FUNCION PRINCIPAL
@@ -31,6 +37,9 @@ function startGame () {
     gameObj.enemysAppear()
     gameObj.disparoEnemigo()
     gameObj.aliadosAppear()
+    gameObj.groguAppear()
+
+    // command + shift + 7
 
     
 }
