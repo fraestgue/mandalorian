@@ -1,6 +1,6 @@
 # Mandalorian
 
-## [Play the game!]
+## [Play the game!] (https://fraestgue.github.io/gameProyect/)
 
 # Descripción
 
@@ -221,6 +221,13 @@ Mandalorian es un juego donde tienes que tratar de eliminar al mayor número de 
 
 - movimientoGrogu()
 
+# Extra Links
+
+## Deploy
+[Link] (https://fraestgue.github.io/gameProyect/)
+
+## Slides 
+[link] (https://docs.google.com/presentation/d/1EOVnj-2528ASx3T_QZuvta7OIes6Z6S8LcBH16xEwpc/edit?usp=sharing)
 
 
 
