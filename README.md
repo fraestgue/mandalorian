@@ -1,6 +1,6 @@
 # Mandalorian
 
-## [Play the game!] (https://fraestgue.github.io/gameProyect/)
+## [Play the game!] (https://fraestgue.github.io/mandalorian/)
 
 # Descripción
 
